@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100% !important">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STOCK</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <link rel="stylesheet" href="./NewStyle.css" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- IonIcons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+
+  <style>
+    .scrolling {
+      scrollbar-width: thin;
+      scrollbar-color: black white;
+    }
+
+    .scrolling::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .scrolling::-webkit-scrollbar-thumb {
+      background-color: black;
+    }
+
+    .scrolling::-webkit-scrollbar-track {
+      background-color: whitesmoke;
+    }
+
+    .inner {
+      background-color: white;
+      color: black;
+    }
+
+    .more {
+      color: white !important;
+      background-color: rgb(25, 68, 25);
+    }
+
+    .activePage {
+      background-color: #785822;
+
+      font-weight: 800;
+    }
+
+    .Icons-Dash {
+      background-color: #021829;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      padding-top: 10px;
+      border-radius: 5px;
+    }
+
+    @media screen and (max-width: 750px) {
+      .Icons-Dash {
+        font-size: 12px;
+      }
+    }
+
+    .addBorder {
+      border-radius: 5px;
+      border-left: 4px solid rgb(25, 68, 25);
+      border-right: 4px solid rgb(25, 68, 25);
+    }
+  </style>
+
+  <body class="hold-transition sidebar-mini ">
+    <div class="wrapper">
+      <nav
+        class="main-header navbar navbar-expand navbar-secondary navbar-light text-sm"
+        style="
+          height: 58px;
+          background-color: white !important;
+          position: sticky;
+          top: 0%;
+        "
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a
+              class="nav-link text-dark"
+              data-widget="pushmenu"
+              href="#"
+              role="button"
+              ><i class="fas fa-bars"></i
+            ></a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto my-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link text-dark"
+              data-widget="fullscreen"
+              href="#"
+              role="button"
+            >
+              <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <aside
+        class="main-sidebar elevation-4 px-2 py-2"
+        style="
+          background-color: white !important;
+          height: 100vh !important;
+          position: fixed;
+          border-right: 2px solid grey;
+        "
+      >
+        <div
+          style="
+            border: 2px solid grey;
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            border-radius: 10px;
+            gap: 10px;
+          "
+        >
+          <img
+            src="dist/img/user2-160x160.jpg"
+            style="
+              height: 40px;
+              width: 40px;
+              border-radius: 5px;
+              background-color: grey;
+            "
+          />
+          <div style="padding-left: 8px">
+            <p style="font-weight: bold; font-size: 20px; margin-bottom: -8px">
+              Hr Admin
+            </p>
+            <p style="margin-bottom: -8px; font-size: 14px">Hr Professionals</p>
+          </div>
+        </div>
+
+        <div class="sidebar" style="overflow-x: hidden">
+          <nav>
+            <ul
+              class="nav nav-pills nav-sidebar flex-column text-sm nav-flat"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li
+                class="nav-item"
+                style="margin-top: 15px; font-size: 16px; color: grey"
+              >
+                General
+              </li>
+              <li class="nav-item mt-2">
+                <a href="#" class="nav-link">
+                  <i
+                    class="nav-icon fa fa-dashboard mr-2"
+                    style="font-size: 25px; color: grey"
+                  ></i>
+                  <p
+                    style="
+                      color: rgb(54, 54, 54);
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link mt-1">
+                  <i
+                    class="nav-icon fa fa-paypal mr-2"
+                    style="font-size: 25px; color: grey"
+                  ></i>
+                  <p
+                    style="
+                      color: rgb(54, 54, 54);
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Payroll
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link mt-1">
+                  <i
+                    class="nav-icon fa fa-users mr-2"
+                    style="font-size: 25px; color: grey"
+                  ></i>
+                  <p
+                    style="
+                      color: rgb(54, 54, 54);
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Employees
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link mt-1">
+                  <i
+                    class="nav-icon fa fa-check-square mr-2"
+                    style="font-size: 25px; color: grey"
+                  ></i>
+                  <p
+                    style="
+                      color: rgb(54, 54, 54);
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Tasks
+                  </p>
+                </a>
+              </li>
+
+              <li
+                class="nav-item"
+                style="margin-top: 15px; font-size: 16px; color: grey"
+              >
+                Others
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link mt-1">
+                  <i
+                    class="nav-icon fa fa-question-circle mr-2"
+                    style="font-size: 25px; color: grey"
+                  ></i>
+                  <p
+                    style="
+                      color: rgb(54, 54, 54);
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Help Center
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link mt-1">
+                  <i
+                    class="nav-icon fa fa-gear mr-2"
+                    style="font-size: 25px; color: grey"
+                  ></i>
+                  <p
+                    style="
+                      color: rgb(54, 54, 54);
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Setting
+                  </p>
+                </a>
+              </li>
+              <!-- <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-user"></i>
+                <p class="text-white">
+                  HRM
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Attendance</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-department')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Department</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-employee')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Employee</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-holiday')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Holiday</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Payroll</p>
+                  </a>
+                </li>
+              </ul>
+            </li> -->
+
+              <li
+                class="nav-item"
+                style="
+                  position: fixed;
+                  bottom: 0%;
+                  background-color: #021829;
+                  margin-left: -8px;
+                "
+              >
+                <a href="#" class="nav-link mt-1">
+                  <i
+                    class="nav-icon fa fa-power-off mr-2"
+                    style="font-size: 25px; color: white"
+                  ></i>
+                  <p
+                    style="
+                      color: white;
+                      font-weight: 600;
+                      font-size: 20px;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                        'Trebuchet MS', sans-serif;
+                    "
+                  >
+                    Logout
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="content-wrapper " style="color: white">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-1">
+              <div class="col-sm-6">
+                <h1 class="m-0" style="font-weight: 900; color: #021829">
+                  Summary
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <div class="container-fluid">
+              <div class="row mt-2">
+                <div class="col-xl-8 col-12">
+                  <div class="row">
+                    <!-- Box 1 Start -->
+                    <div class="col-md-4 col-12 mt-3">
+                      <div class="boxCard" style="background-color: rgb(194, 194, 240);">
+                        <div>
+                          <p class="boxTitle">Total Employees</p>
+                          <p class="boxNumber">599</p>
+                        </div>
+                        <i
+                          class="fa fa-users"
+                          style="
+                           color:black;
+                            font-size: 30px;
+                            border: 1px solid grey;
+                            padding: 10px;
+                            border-radius: 10px;
+                          "
+                        ></i>
+                      </div>
+                    </div>
+
+                    <!-- Box 2 Start -->
+                    <div class="col-md-4 col-12 mt-3" >
+                      <div class="boxCard" style="background-color: rgb(162, 231, 162);">
+                        <div>
+                          <p class="boxTitle">Gross Salary</p>
+                          <p class="boxNumber"><span>$</span>50000000</p>
+                        </div>
+                        <i
+                          class="fa fa-money"
+                          style="
+                           color:black;
+                            font-size: 30px;
+                            border: 1px solid grey;
+                            padding: 10px;
+                            border-radius: 10px;
+                          "
+                        ></i>
+                      </div>
+                    </div>
+                    <!-- Box 3 Start -->
+
+                    <div class="col-md-4 col-12 mt-3">
+                      <div class="boxCard" style="background-color: rgb(198, 246, 102);">
+                        <div>
+                          <p class="boxTitle">Job Applied</p>
+                          <p class="boxNumber">5000</p>
+                        </div>
+                        <i
+                          class="fa fa-briefcase"
+                          style="
+                           color:black;
+                            font-size: 30px;
+                            border: 1px solid grey;
+                            padding: 10px;
+                            border-radius: 10px;
+                          "
+                        ></i>
+                      </div>
+                    </div>
+                    <!-- Box 4 Start -->
+
+                    <div class="col-md-4 col-12 mt-3">
+                      <div class="boxCard" style="background-color: rgb(255, 155, 155);">
+                        <div>
+                          <p class="boxTitle">Today's Attendance</p>
+                          <p class="boxNumber">5000</p>
+                        </div>
+                        <i
+                          class="fa fa-bar-chart"
+                          style="
+                           color:black;
+                            font-size: 30px;
+                            border: 1px solid grey;
+                            padding: 10px;
+                            border-radius: 10px;
+                          "
+                        ></i>
+                      </div>
+                    </div>
+                    <!-- Box 5 Start -->
+
+                    <div class="col-md-4 col-12 mt-3">
+                      <div class="boxCard" style="background-color: pink;">
+                        <div>
+                          <p class="boxTitle">Today's Interview</p>
+                          <p class="boxNumber">10</p>
+                        </div>
+                        <i
+                          class="fa fa-question-circle"
+                          style="
+                           color:black;
+                            font-size: 30px;
+                            border: 1px solid grey;
+                            padding: 10px;
+                            border-radius: 10px;
+                          "
+                        ></i>
+                      </div>
+                    </div>
+                    <!-- Box 6 Start -->
+
+                    <div class="col-md-4 col-12 mt-3">
+                      <div class="boxCard" style="background-color: beige;">
+                        <div>
+                          <p class="boxTitle">New Joining</p>
+                          <p class="boxNumber">10</p>
+                        </div>
+                        <i
+                          class="fa fa-plus"
+                          style="
+                           color:black;
+                            font-size: 30px;
+                            border: 1px solid grey;
+                            padding: 10px;
+                            border-radius: 10px;
+                          "
+                        ></i>
+                      </div>
+                    </div>
+                    <!-- Box 6 End -->
+                  </div>
+                </div>
+                <div class="col-xl-4 col-12 mt-3">
+                  <div
+                    class="boxCard"
+                    id="pieChartContainer"
+                    style="
+                      padding: 20px;
+                      background-color: whitesmoke;
+                      display: flex;
+                      flex-direction: column;
+                    "
+                  >
+                    <select
+                      style="
+                        width: 100%;
+                        padding: 10px 15px;
+                        border-radius: 15px;
+                        background-color: rgb(111, 179, 165);
+                        font-weight: bold;
+                        color: black;
+                        box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.8), 4px 4px 10px rgba(255, 255, 255, 0.8);
+
+                        border: none;
+                      "
+                    >
+                      <option>Yearly</option>
+                      <option>Monthly</option>
+                    </select>
+                    <div
+                      id="chart2"
+                      style="height: 100%; position: relative; margin-top: 10px"
+                    >
+                      <div
+                         class="holidayBox"
+                      >
+                        <p class="holidayTitle">Total Holidays</p>
+                        <p class="holidayNumb">45 Days</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-8 col-12 adjust" >
+                  <div class="boxTable">
+                    <div
+                      style="
+                        padding: 10px;
+                        color: black;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        border-radius: 10px 10px 0px 0px;
+                        background-color: rgb(0, 81, 255);
+                      "
+                    >
+                      <p
+                        class="holidayNumb"
+                        style="
+                          margin-bottom: 10px;
+                          flex: 1;
+                          color:white;
+                        "
+                      >
+                        Application Status
+                      </p>
+                      <select
+                        style="
+                          flex: 1;
+                          width: 100%;
+                          padding: 10px;
+                          border-radius: 15px;
+                          
+                          font-weight: bold;
+                          color: black;
+                          border: none;
+                        "
+                      >
+                        <option>Leave Application</option>
+                        <option>Job Application</option>
+                      </select>
+                    </div>
+
+                    <table
+                      id="example1 "
+                      class="table table-bordered table-striped d-block scrolling"
+                      style="overflow : scroll;max-height: 450px;"
+                    >
+                      <thead
+                        style="
+                          background-color: gold;
+                          color: black;
+                         
+                        "
+                      >
+                        <tr>
+                          <th>Date</th>
+                          <th>Code</th>
+                          <th>Emp_ID</th>
+                          <th>Name</th>
+                          <th>Leave</th>
+                          <th>Branch</th>
+                          <th>Head</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Reason</th>
+                          <th>Status</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody style="color: black">
+                        <tr>
+                          <td>2024-03-21</td>
+                          <td>001</td>
+                          <td>12345</td>
+                          <td>John Doe</td>
+                          <td>Vacation</td>
+                          <td>New York</td>
+                          <td>Manager</td>
+                          <td>March 15  </td>
+                          <td>  March 25</td>
+                          <td>Annual Leave</td>
+                          <td>Approved</td>
+                        </tr>
+                        <tr>
+                          <td>2024-03-22</td>
+                          <td>002</td>
+                          <td>67890</td>
+                          <td>Jane Smith</td>
+                          <td>Sick Leave</td>
+                          <td>Los Angeles</td>
+                          <td>Supervisor</td>
+                          <td>March 20  </td>
+                          <td>  March 22</td>
+                          <td>Flu</td>
+                          <td>Approved</td>
+                        </tr>
+                        <tr>
+                          <td>2024-03-22</td>
+                          <td>002</td>
+                          <td>67890</td>
+                          <td>Jane Smith</td>
+                          <td>Sick Leave</td>
+                          <td>Los Angeles</td>
+                          <td>Supervisor</td>
+                          <td>March 20  </td>
+                          <td>  March 22</td>
+                          <td>Flu</td>
+                          <td>Approved</td>
+                        </tr>
+                      </tbody>
+                      <tfoot></tfoot>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="col-xl-4 col-12 mt-3 addback"  >
+                  <div
+                    class="giftCard"
+                    style="
+                      padding: 20px;
+                      height: 183px;
+                      background: url(./images/best.webp);
+                      background-repeat: no-repeat;
+                     
+                       "
+                  >
+                  <img
+                  src="dist/img/user2-160x160.jpg"
+                  style="
+                    height: 120px;
+                    width: 120px;
+                    border-radius: 50%;
+                    background-color: grey;"
+                />
+                <div>
+                  <p class="text-center" style="font-size: 20px; background-color: yellow;padding: 5px;border-radius: 10px;color: black;font-weight: bold;">Best Performer</p>
+                  <p class="holidayNumb" style="color: white;">Pankaj Purohit</p>
+                  <p class="holidayTitle" style="color: white;">Director</p>
+                </div>
+                     
+                        
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="main-footer" style="position: sticky;bottom: 0%;">
+        <strong
+          >Copyright &copy; 2023-2024
+          <a href="https://www.etsnetworks.in/">ETS NETWORKS</a>.</strong
+        >
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+          <b>Version</b> 1.0.0
+        </div>
+      </footer>
+    </div>
+    <script src="plugins/jquery/jquery.min.js"></script>
+
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="dist/js/adminlte.js"></script>
+
+    <script src="plugins/chart.js/Chart.min.js"></script>
+
+    <script src="dist/js/pages/dashboard3.js"></script>
+    <script>
+      (function destroy() {
+        document.getElementById("sidebar-overlay").remove();
+      })();
+    </script>
+    <script>
+      var optionsBar = {
+        series: [
+          {
+            data: [44, 55, 41, 64, 22, 43, 21],
+          },
+          {
+            data: [53, 32, 33, 52, 13, 44, 32],
+          },
+        ],
+        chart: {
+          type: "bar",
+          height: 405,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            dataLabels: {
+              position: "top",
+            },
+            barWidth: "10px",
+          },
+        },
+        colors: ["#023020", "#7DF9FF"],
+        dataLabels: {
+          enabled: true,
+          offsetX: 0,
+          offsetY: -15,
+          style: {
+            fontSize: "12px",
+            colors: ["#355E3B"],
+          },
+        },
+        stroke: {
+          show: true,
+          colors: ["#C9CC3F"],
+        },
+        tooltip: {
+          shared: true,
+          intersect: false,
+        },
+        xaxis: {
+          categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
+        },
+      };
+
+      var chartBar = new ApexCharts(
+        document.querySelector("#chart"),
+        optionsBar
+      );
+      chartBar.render();
+
+      var optionsPie = {
+        series: [4, 5, 1, 3],
+        chart: {
+          toolbar: {
+            show: false,
+          },
+          width: "100%",
+          height: "350px",
+
+          type: "donut",
+        },
+        dataLabels: {
+          enabled: true,
+        },
+        fill: {
+          type: "solid",
+        },
+        legend: {
+          position: "bottom",
+        },
+        labels: ["National", "Public", "Festival", "Other"],
+        colors: ["#50C878", "#C4B454", "#AAFF00", "#5F9EA0"],
+        responsive: [
+          {
+            breakpoint: 450,
+            options: {
+              chart: {
+                width: "80%",
+              },
+            },
+          },
+        ],
+      };
+
+      var chartPie = new ApexCharts(
+        document.querySelector("#chart2"),
+        optionsPie
+      );
+      chartPie.render();
+
+      window.addEventListener("resize", function () {
+        var barHeight =
+          document.getElementById("pieChartContainer").clientHeight;
+        chartPie.updateOptions({
+          chart: {
+            height: barHeight,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

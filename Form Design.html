@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100% !important;">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STOCK</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<style>
+  .scrolling {
+    scrollbar-width: thin;
+    scrollbar-color: black white;
+  }
+
+  .scrolling::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrolling::-webkit-scrollbar-thumb {
+    background-color: black;
+  }
+
+  .scrolling::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+  }
+
+  .inner {
+    background-color: white;
+    color: black;
+  }
+
+
+  .more {
+    color: white !important;
+    background-color: rgb(25, 68, 25);
+  }
+
+  .activePage {
+    background-color: #785822;
+
+    font-weight: 800;
+  }
+
+  .sidesEle {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .Icons-Dash {
+    background-color: #021829;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    padding-top: 10px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 750px) {
+    .Icons-Dash {
+      font-size: 12px;
+    }
+  }
+
+  .addBorder {
+    border-radius: 5px;
+    border-left: 4px solid rgb(25, 68, 25);
+    border-right: 4px solid rgb(25, 68, 25);
+  }
+</style>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <nav class="main-header navbar navbar-expand navbar-secondary navbar-light text-sm"
+      style="height:58px; background-color: rgb(25, 68, 25) !important; position: sticky; top: 0%; ">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+
+
+        <li class="nav-item">
+          <a class="nav-link text-light" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+
+        <li class="nav-item hidden-mobile">
+          <div class="user-panel  d-flex">
+            <div class="image">
+              <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+              <span class="activedot"></span>
+            </div>
+            <div class="info">
+              <a href="#" class="d-block text-white">Alexander Pierce</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="main-sidebar sidebar-dark-secondary elevation-4"
+      style="background-color:rgb(25, 68, 25) !important; height: 100vh !important; position: fixed;">
+
+
+
+      <p class="brand-link text-light bg-black">
+
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text text-white">AdminLTE 3</span>
+
+      </p>
+
+      <div class="sidebar">
+
+
+        <nav>
+          <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-flat" data-widget="treeview" role="menu"
+            data-accordion="false">
+
+            <li class="nav-item sidesEle  ">
+              <a href="./index.html" class="nav-link activePage p-2">
+                <i class="nav-icon fas fa-home "></i>
+                <p class="text-white ">
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="nav-item sidesEle ">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-sliders-h"></i>
+                <p class="text-white">
+                  Products
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Ajustment</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-product')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Product</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Adjustment List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-product-category')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Category</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-product-type')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Type</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Print Barcode Sidebar</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-product')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Product List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Stock Count</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-cart-plus"></i>
+                <p class="text-white">
+                  Purchase
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-purchase')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Purchase</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Import Purchase By CSV</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-purchase')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Purchase List</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle ">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-truck-loading"></i>
+                <p class="text-white">Sale<i class="fas fa-angle-left right"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Sale</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Coupon List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Courier List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Delivery List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Gift Card List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Import Sale By CSV</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">POS</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2" style="background-color: black;">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Sale List</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-wallet"></i>
+                <p class="text-white">
+                  Expense
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-expense-category')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Expense Category</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-expense')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Expense List</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-pen-square"></i>
+                <p class="text-white">
+                  Quotation
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Quotation</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Quotation list</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="fas fa-money-bill-wave-alt nav-icon" style="font-size: small;"></i>
+                <p class="text-white">
+                  Transfer
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Transfer</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Import Transfer By CSV</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Transfer list</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-share"></i>
+                <p class="text-white">
+                  Return
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Purchase</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Sale</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-comments-dollar"></i>
+                <p class="text-white">Accounting<i class="fas fa-angle-left right"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Account List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Account Statement</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Account</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Balance Sheet</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Money Transfer</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-user"></i>
+                <p class="text-white">
+                  HRM
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Attendance</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-department')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Department</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-employee')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Employee</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-holiday')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Holiday</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Payroll</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-users"></i>
+                <p class="text-white">
+                  People
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-biller')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Biller</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-supplier')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add Supplier</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-user')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Add User</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-biller')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Biller List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-supplier')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Supplier List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-user')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">User List</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-file-archive"></i>
+                <p class="text-white">
+                  Reports
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Best Seller</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Customer Due Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Customer Group Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Customer Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Daily Purchase</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Daily Sale</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Daily Sale Objective Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Monthly Purchase</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Monthly Sale</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Payment Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Product Expiry Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Product Quantity Alert</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Product Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Purchase Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Sale Due Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Sale Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Sale Report chart</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Summery Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Supplier Due Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Supplier Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">User Report</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Warehouse Stock Chart</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Warehouse Report</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item sidesEle">
+              <a href="#" class="nav-link p-2">
+                <i class="nav-icon fas fa-cogs"></i>
+                <p class="text-white">
+                  Settings
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">All Notifications</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-brand')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Brand</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Create SMS</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-currency')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Currency</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Custom Field List</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-customerGroup')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Customer Group</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-discount')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Discount</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-general')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">General Setting</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-hrmSetting')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">HRM Setting</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Mail Setting</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">POS Setting</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-reward-point')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Reward Point Setting</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('add-role')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Role Permission</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Send Notification</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">SMS Setting</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-tax')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Tax</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-unit')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Unit</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="#" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">User Profile</p>
+                  </a>
+                </li>
+                <li class="nav-item sidesEle">
+                  <a href="{{route('view-warehouse')}}" class="nav-link p-2">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                    <p class="text-white">Warehouse</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+    </aside>
+
+
+    <div class="content-wrapper"
+      style="height: max-content !important; max-height: max-content !important; min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px)) !important; background-color: rgb(232, 232, 232);">
+
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-1  ">
+            <div class="col-sm-6">
+              <h1 class="m-0" style="font-weight: 900;">Dashboard</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item " style="color: black; font-weight: bold;">Dashboard</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="container-fluid">
+
+
+
+            <div class="row mt-4 mb-4 ml-1" style="display: flex;gap: 8px;">
+              <div class="col-md-2 col-lg-1 col-sm-3 col-2 Icons-Dash">
+                <i class="fa fa-shopping-cart" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600;">Pos</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-3  Icons-Dash">
+                <i class="fas fa-sliders-h" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600; ">Products</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-3  Icons-Dash">
+                <i class="nav-icon fas fa-truck-loading" style="color: yellowgreen;"></i> </i>
+                <p style="font-weight: 600; ">Sale</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-3 Icons-Dash">
+                <i class="fa fa-shopping-bag" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600; ">Purchase</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-3  Icons-Dash">
+                <i class="fas fa-wallet" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600; ">Expense</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-2  Icons-Dash">
+                <i class="fas fa-comments-dollar" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600; ">Account</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-3  Icons-Dash">
+                <i class="fas fa-pen-square" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600; ">Quotation</p>
+              </div>
+              <div class="col-md-2 col-lg-1 col-sm-3 col-3  Icons-Dash">
+                <i class="fas fa-file-archive" aria-hidden="true" style="color: yellowgreen;"></i>
+                <p style="font-weight: 600; ">Reports</p>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box " style="background-color: #4285F4;">
+                  <div class="px-3 py-1 text-white">
+                    <h3>65</h3>
+                    <p>Unique Visitors</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-pie-graph" style="color: rgb(4, 42, 92) !important;"></i>
+                  </div>
+
+                  <a href="#" class="small-box-footer"
+                    style="background-color: #8eb7f9 !important; color: white !important;">More info
+                    <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3  col-6">
+
+                <div class="small-box" style="background-color: #34A853;">
+                  <div class="px-3 py-1 text-white">
+                    <h3>65</h3>
+                    <p>Unique Visitors</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-pie-graph" style="color: whitesmoke !important;"></i>
+                  </div>
+                  <a href="#" class="small-box-footer"
+                    style="background-color: #3bcb62 !important; color: white !important;">More info
+                    <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box " style="background-color: #FBBC05;">
+                  <div class="px-3 py-1 text-white">
+                    <h3>65</h3>
+                    <p>Unique Visitors</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-pie-graph" style="color: rgb(76, 34, 167) !important;"></i>
+                  </div>
+
+                  <a href="#" class="small-box-footer"
+                    style="background-color: #f9cf51!important; color: white !important;">More info
+                    <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box " style="background-color: #EA4335;">
+                  <div class="px-3 py-1 text-white">
+                    <h3>65</h3>
+                    <p>Unique Visitors</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-pie-graph" style="color: yellowgreen  !important;"></i>
+                  </div>
+
+                  <a href="#" class="small-box-footer"
+                    style="background-color: #e56f64  !important; color: white !important;">More info
+                    <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <div class="card p-2" id="bar">
+                  <h5 class="pl-3 pt-2">Top 5 contenders</h5>
+                  <div id="chart"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-12">
+                <div class="card p-2" id="pie">
+                  <h5 class="pl-3 pt-2">Top 5 contenders</h5>
+                  <div id="chart2"></div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-lg-6 col-12 ">
+                <div class="card " style='height: 500px'>
+                  <div class="card-header" style="background-color: #355E3B; color: white; font-weight: 700;">
+                    <h5>Table For Dimak</h5>
+                  </div>
+                  <div class="card-body scrolling" style=" overflow-y: auto">
+                    <table class=" table table-bordered table-hover " style="position: relative;">
+                      <thead
+                        style="background-color: #ECFFDC; color: black; font-weight: bolder; position: sticky; top: -4.5%;">
+                        <tr>
+                          <td>Dimak0</td>
+                          <td>Dimak01</td>
+                        </tr>
+                      </thead>
+                      <tbody id="table-body">
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+                        <tr>
+                          <td>01</td>
+                          <td>02</td>
+                        </tr>
+
+                      </tbody>
+                      <tfoot>
+                        <!-- style="background-color: #57e3f5; color: black; font-weight: bolder; position: sticky; bottom: -5%;" -->
+                        <tr>
+                          <td>Dimak0</td>
+                          <td>Dimak01</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-lg-6 col-12 ">
+                <div class="card " style='height: 500px'>
+                  <div class="card-header" style="background-color: #29d543; color: white; font-weight: 700;">
+                    <h5>TOP PERFORMER</h5>
+                  </div>
+                  <div class="card-body scrolling" style=" overflow-y: auto">
+                    <table class=" table table-bordered table-hover " style="position: relative;">
+                      <thead
+                        style="background-color: #57e3f5; color: black; font-weight: bolder; position: sticky; top: -5%;">
+                        <tr>
+                          <td>NAME</td>
+                          <td>STATE</td>
+                          <td>BRANCH</td>
+                        </tr>
+                      </thead>
+                      <tbody id="table-body">
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+
+                      </tbody>
+                      <tfoot
+                        style="background-color: #ECFFDC; color: black; font-weight: bolder; position: sticky; bottom: -5%;">
+                        <tr>
+                          <td>JOHN</td>
+                          <td>DELHI</td>
+                          <td>CODING</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <div class="card ">
+                  <div class="card-head p-2" style="background-color: #7CFC00;">
+                    <h5 class="pl-3 pt-2" style="font-weight: bold; letter-spacing: 1px;">COMPANY NEWS</h5>
+                  </div>
+
+                  <div class="card-body">
+                    <div>
+                      <p style="font-weight: 700;"><span><i class='fas fa-arrow-alt-circle-right mr-2'></i></span>About
+                        Holidays</p>
+                      <p style="margin-top: -15px; margin-left: 23px;"> Lorem ipsum dolor, sit amet
+                        consectetur adipisicing
+                        elit. Omnis necessitatibus et
+                        deleniti,
+                        hic, quos temporibus vitae quae quam saepe natus assumenda, ratione quod! Debitis placeat
+                        deserunt iste repellat! Mollitia, reiciendis.</p>
+                    </div>
+                    <div>
+                      <p style="font-weight: 700;"><span><i class='fas fa-arrow-alt-circle-right mr-2'></i></span>About
+                        Holidays</p>
+                      <p style="margin-top: -15px; margin-left: 23px;"> Lorem ipsum dolor, sit amet
+                        consectetur adipisicing
+                        elit. Omnis necessitatibus et
+                        deleniti,
+                        hic, quos temporibus vitae quae quam saepe natus assumenda, ratione quod! Debitis placeat
+                        deserunt iste repellat! Mollitia, reiciendis.</p>
+                    </div>
+                    <button
+                      style="background-color: black;  border-radius: 5px; padding: 2px 15px 2px 15px;margin-left: 20px; "><a
+                        href="#" style="text-decoration: none;color: white;">Read
+                        more</a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2023-2024 <a href="https://www.etsnetworks.in/">ETS NETWORKS</a>.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 1.0.0
+      </div>
+    </footer>
+
+  </div>
+  <script src="plugins/jquery/jquery.min.js"></script>
+
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="dist/js/adminlte.js"></script>
+
+  <script src="plugins/chart.js/Chart.min.js"></script>
+
+
+  <script src="dist/js/pages/dashboard3.js"></script>
+  <script>
+    (function destroy() {
+      document.getElementById('sidebar-overlay').remove();
+    })();
+  </script>
+  <script>
+    var optionsBar = {
+      series: [{
+        data: [44, 55, 41, 64, 22, 43, 21]
+      }, {
+        data: [53, 32, 33, 52, 13, 44, 32]
+      }],
+      chart: {
+        type: 'bar',
+        height: 405
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          dataLabels: {
+            position: 'top',
+          },
+          barWidth: '10px',
+        }
+      },
+      colors: ['#023020', '#7DF9FF'],
+      dataLabels: {
+        enabled: true,
+        offsetX: 0,
+        offsetY: -15,
+        style: {
+          fontSize: '12px',
+          colors: ['#355E3B']
+        }
+      },
+      stroke: {
+        show: true,
+        colors: ['#C9CC3F']
+      },
+      tooltip: {
+        shared: true,
+        intersect: false
+      },
+      xaxis: {
+        categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
+      },
+    };
+
+    var chartBar = new ApexCharts(document.querySelector("#chart"), optionsBar);
+    chartBar.render();
+
+    var optionsPie = {
+      series: [44, 55, 13, 43, 22],
+      chart: {
+        toolbar: {
+          show: true,
+          tools: {
+            download: true,
+          },
+        },
+        width: '100%',
+        height: '450px',
+        type: 'donut',
+      },
+      dataLabels: {
+        enabled: true,
+      },
+      fill: {
+        type: 'solid',
+      },
+      legend: {
+        position: 'bottom'
+      },
+      labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+      colors: ['#50C878', '#C4B454', '#AAFF00', '#5F9EA0', '#097969'],
+      responsive: [{
+        breakpoint: 450,
+        options: {
+          chart: {
+            width: '80%'
+          },
+        }
+      }]
+    };
+
+    var chartPie = new ApexCharts(document.querySelector("#chart2"), optionsPie);
+    chartPie.render();
+
+    window.addEventListener('resize', function () {
+      let barHeight = document.getElementById('bar').clientHeight;
+      chartPie.updateOptions({
+        chart: {
+          height: barHeight
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

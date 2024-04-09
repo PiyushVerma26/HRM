@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>District Complaints</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="../updated_colors.css">
+    <link rel="stylesheet" href="./NewStyle.css">
+    <link rel="stylesheet" type="text/css" href="../daterangepicker-bs3.css" />
+    <link rel="stylesheet" href="../my-popup.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-secondary navbar-light text-sm"
+            style="height:58px; background-color: rgb(25, 68, 25) !important; position: sticky; top: 0%; ">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
+                </li>
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-light" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+
+                <li class="nav-item hidden-mobile">
+                    <div class="user-panel  d-flex">
+                        <div class="image">
+                            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                            <span class="activedot"></span>
+                        </div>
+                        <div class="info">
+                            <a href="#" class="d-block text-white">Alexander Pierce</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <aside class="main-sidebar sidebar-dark-secondary elevation-4"
+            style="background-color:rgb(25, 68, 25) !important; height: 100vh !important; position: fixed;">
+
+
+
+            <p class="brand-link text-light bg-black">
+
+                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
+                <span class="brand-text text-white">AdminLTE 3</span>
+
+            </p>
+
+            <div class="sidebar">
+
+
+                <nav>
+                    <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-flat" data-widget="treeview"
+                        role="menu" data-accordion="false">
+
+                        <li class="nav-item sidesEle  ">
+                            <a href="./index2.html" class="nav-link activePage p-2">
+                                <i class="nav-icon fas fa-home "></i>
+                                <p class="text-white ">
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item sidesEle ">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-sliders-h"></i>
+                                <p class="text-white">
+                                    Products
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Ajustment</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-product')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Product</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Adjustment List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-product-category')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Category</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-product-type')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Type</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Print Barcode Sidebar</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-product')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Product List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Stock Count</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-cart-plus"></i>
+                                <p class="text-white">
+                                    Purchase
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-purchase')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Purchase</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Import Purchase By CSV</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-purchase')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Purchase List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle ">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-truck-loading"></i>
+                                <p class="text-white">Sale<i class="fas fa-angle-left right"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Sale</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Coupon List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Courier List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Delivery List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Gift Card List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Import Sale By CSV</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">POS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2" style="background-color: black;">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Sale List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-wallet"></i>
+                                <p class="text-white">
+                                    Expense
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-expense-category')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Expense Category</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-expense')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Expense List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-pen-square"></i>
+                                <p class="text-white">
+                                    Quotation
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Quotation</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Quotation list</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="fas fa-money-bill-wave-alt nav-icon" style="font-size: small;"></i>
+                                <p class="text-white">
+                                    Transfer
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Transfer</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Import Transfer By CSV</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Transfer list</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-share"></i>
+                                <p class="text-white">
+                                    Return
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Purchase</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Sale</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-comments-dollar"></i>
+                                <p class="text-white">Accounting<i class="fas fa-angle-left right"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Account List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Account Statement</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Account</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Balance Sheet</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Money Transfer</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p class="text-white">
+                                    HRM
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Attendance</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-department')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Department</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-employee')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Employee</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-holiday')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Holiday</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Payroll</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p class="text-white">
+                                    People
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-biller')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Biller</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-supplier')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add Supplier</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-user')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Add User</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-biller')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Biller List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-supplier')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Supplier List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-user')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">User List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-file-archive"></i>
+                                <p class="text-white">
+                                    Reports
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Best Seller</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Customer Due Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Customer Group Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Customer Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Daily Purchase</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Daily Sale</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Daily Sale Objective Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Monthly Purchase</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Monthly Sale</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Payment Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Product Expiry Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Product Quantity Alert</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Product Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Purchase Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Sale Due Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Sale Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Sale Report chart</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Summery Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Supplier Due Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Supplier Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">User Report</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Warehouse Stock Chart</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Warehouse Report</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidesEle">
+                            <a href="#" class="nav-link p-2">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p class="text-white">
+                                    Settings
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">All Notifications</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-brand')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Brand</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Create SMS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-currency')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Currency</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Custom Field List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-customerGroup')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Customer Group</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-discount')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Discount</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-general')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">General Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-hrmSetting')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">HRM Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Mail Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">POS Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-reward-point')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Reward Point Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('add-role')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Role Permission</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Send Notification</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">SMS Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-tax')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Tax</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-unit')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Unit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="#" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">User Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item sidesEle">
+                                    <a href="{{route('view-warehouse')}}" class="nav-link p-2">
+                                        <i class="fas fa-arrow-right nav-icon" style="font-size: small;"></i>
+                                        <p class="text-white">Warehouse</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </aside>
+        <div class="content-wrapper formBack">
+
+
+            <section class="content-header">
+                <div class="container-fluid bg-white rounded p-0 mt-0">
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12  ">
+                            <div class="card">
+
+                                <div class="card shadow-none">
+                                    <div class="card-header newHead">
+                                        <h3 class="card-title" style="font-weight: bold;">
+                                            District Complaints
+                                        </h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <table id="example1"
+                                            class="table table-bordered table-striped d-block d-md-table"
+                                            style="overflow-x: scroll;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Reference</th>
+                                                    <th>Warehouse(From)</th>
+                                                    <th>Warehouse(To)</th>
+                                                    <th>Product Cost</th>
+                                                    <th>Product Tax</th>
+                                                    <th>Grand Total</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>06-12-23</td>
+                                                    <td>ets-21354655465335</td>
+                                                    <td>Warehouse 1</td>
+                                                    <td>Warehouse 2</td>
+                                                    <td>1600.00</td>
+                                                    <td>0.00</td>
+                                                    <td>1600.00</td>
+                                                    <td style="cursor:pointer;" onclick="openMode1()"><span
+                                                            class="badge badge-success p-2">Completed</span></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <button type="button"
+                                                                class="btn btn-outline-info">Action</button>
+                                                            <button type="button"
+                                                                class="btn btn-info dropdown-toggle dropdown-icon"
+                                                                data-toggle="dropdown" aria-expanded="false">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                                                <a class="dropdown-item" href="#"
+                                                                    onclick="openMode1()"><span><i
+                                                                            class="fa fa-eye"></i></span>&emsp;View</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"
+                                                                    href="./update-transfer.html"><i
+                                                                        class="fa fa-pen-to-square"></i>&emsp;Edit</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item" href="#"><span><i
+                                                                            class="fa fa-trash"></i></span>&emsp;Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="7">Total</th>
+                                                    <th colspan="2">0.00</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block"><b>Version</b> 3.1.0</div>
+            <strong>Copyright &copy; 2014-2021
+                <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="../my-popup.js"></script>
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/jszip/jszip.min.js"></script>
+    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+
+    <!-- Date Range Picekr -->
+    <script type="text/javascript" src="../moment.js"></script>
+    <script type="text/javascript" src="../daterangepicker.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[name="daterange"]').daterangepicker();
+        });
+
+        $(function () {
+            $("#example1")
+                .DataTable({
+                    responsive: true,
+                    lengthChange: false,
+                    autoWidth: false,
+                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                })
+                .buttons()
+                .container()
+                .appendTo("#example1_wrapper .col-md-6:eq(0)");
+            $("#example2").DataTable({
+                paging: true,
+                lengthChange: false,
+                searching: false,
+                ordering: true,
+                info: true,
+                autoWidth: false,
+                responsive: true,
+            });
+        });
+    </script>
+</body>
+
+</html>
